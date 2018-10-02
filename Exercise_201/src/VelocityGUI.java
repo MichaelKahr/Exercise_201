@@ -5,11 +5,15 @@
  */
 public class VelocityGUI extends javax.swing.JFrame {
 
+    private VelocityTabelModel model = new VelocityTabelModel();
+
     /**
      * Creates new form VelocityGUI
      */
     public VelocityGUI() {
         initComponents();
+        jtOut.setModel(model);
+        jtOut.setDefaultRenderer(Object.class, new VelocityTableRenderer());
     }
 
     /**
@@ -21,21 +25,85 @@ public class VelocityGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jmAdd = new javax.swing.JMenuItem();
+        jmDelete = new javax.swing.JMenuItem();
+        jmMean = new javax.swing.JMenuItem();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtOut = new javax.swing.JTable();
+
+        jmAdd.setText("Add");
+        jmAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmAddActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(jmAdd);
+
+        jmDelete.setText("Delete");
+        jmDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmDeleteActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(jmDelete);
+
+        jmMean.setText("Show mean");
+        jmMean.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmMeanActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(jmMean);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jScrollPane1.setComponentPopupMenu(jPopupMenu1);
+
+        jtOut.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jtOut.setComponentPopupMenu(jPopupMenu1);
+        jScrollPane1.setViewportView(jtOut);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jmAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmAddActionPerformed
+        VelocityDlg dialog = new VelocityDlg(this, true);
+        dialog.setVisible(true);
+        if (dialog.isOk()) {
+            Velocity a = dialog.getV();
+            model.add(a);
+        }
+    }//GEN-LAST:event_jmAddActionPerformed
+
+    private void jmDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmDeleteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmDeleteActionPerformed
+
+    private void jmMeanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmMeanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmMeanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -73,5 +141,11 @@ public class VelocityGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JMenuItem jmAdd;
+    private javax.swing.JMenuItem jmDelete;
+    private javax.swing.JMenuItem jmMean;
+    private javax.swing.JTable jtOut;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,6 +5,8 @@
  */
 
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 /**
@@ -14,8 +16,8 @@ import java.time.format.DateTimeFormatter;
 public class VelocityDlg extends javax.swing.JDialog {
 
     private boolean ok = false;
-    private DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-    private DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("hh:mm");
+    private Velocity v;
+
     /**
      * Creates new form AddDialog
      */
@@ -27,6 +29,11 @@ public class VelocityDlg extends javax.swing.JDialog {
     public boolean isOk() {
         return ok;
     }
+
+    public Velocity getV() {
+        return v;
+    }
+    
 
 
 
@@ -137,6 +144,7 @@ public class VelocityDlg extends javax.swing.JDialog {
 
     private void btAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddActionPerformed
         ok=true;
+        v = new Velocity(LocalDate.parse(tfDate.getText()),LocalTime.parse(tfTime.getText()),tfSign.getText(),Integer.parseInt(tfVG.getText()),Integer.parseInt(tfVE.getText()));
         this.dispose();
     }//GEN-LAST:event_btAddActionPerformed
 
