@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -8,6 +9,15 @@ import javax.swing.JOptionPane;
 
 
 
+=======
+import javax.swing.JOptionPane;
+
+
+/**
+ *
+ * @author mikeykahr
+ */
+>>>>>>> dff7dacab0113673f110dcaa5304af51da18b711
 public class VelocityGUI extends javax.swing.JFrame {
 
     private VelocityTabelModel model = new VelocityTabelModel();
@@ -20,12 +30,16 @@ public class VelocityGUI extends javax.swing.JFrame {
         initComponents();
         jtOut.setModel(model);
         jtOut.setDefaultRenderer(Object.class, new VelocityTableRenderer());
+<<<<<<< HEAD
         
         try{
             mes.load(file , model.getVelocities());
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Load error!");
         }
+=======
+        jtOut.setShowGrid(true);
+>>>>>>> dff7dacab0113673f110dcaa5304af51da18b711
     }
 
     /**
@@ -89,6 +103,7 @@ public class VelocityGUI extends javax.swing.JFrame {
             }
         ));
         jtOut.setComponentPopupMenu(jPopupMenu1);
+        jtOut.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jtOut);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -123,7 +138,9 @@ public class VelocityGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jmDeleteActionPerformed
 
     private void jmMeanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmMeanActionPerformed
-        // TODO add your handling code here:
+        int res =model.mean();
+        JOptionPane.showMessageDialog(null,String.format("Die durchschnittliche Übertretung war: %d km/h",res));
+                
     }//GEN-LAST:event_jmMeanActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
