@@ -40,5 +40,15 @@ public class VelocityTabelModel extends AbstractTableModel {
         Velocity v = velocities.get(rowIndex);
         return v;
     }
+    
+    public int mean(){
+        int count = 0;
+        int sum=0;
+        for (Velocity v : velocities) {
+            count++;
+            sum+=v.getUebertreten();
+        }
+        return sum/count;
+    }
 
 }

@@ -17,6 +17,7 @@ public class VelocityTableRenderer implements TableCellRenderer {
         Velocity v = (Velocity) value;
         JLabel label = new JLabel();
         label.setOpaque(true);
+        
         //label.setBackground(s.getHairColor());
         switch (column) {
             case 0:

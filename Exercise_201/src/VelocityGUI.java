@@ -1,4 +1,7 @@
 
+import javax.swing.JOptionPane;
+
+
 /**
  *
  * @author mikeykahr
@@ -14,6 +17,7 @@ public class VelocityGUI extends javax.swing.JFrame {
         initComponents();
         jtOut.setModel(model);
         jtOut.setDefaultRenderer(Object.class, new VelocityTableRenderer());
+        jtOut.setShowGrid(true);
     }
 
     /**
@@ -103,7 +107,9 @@ public class VelocityGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jmDeleteActionPerformed
 
     private void jmMeanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmMeanActionPerformed
-        // TODO add your handling code here:
+        int res =model.mean();
+        JOptionPane.showMessageDialog(null,String.format("Die durchschnittliche Übertretung war: %d km/h",res));
+                
     }//GEN-LAST:event_jmMeanActionPerformed
 
     /**
