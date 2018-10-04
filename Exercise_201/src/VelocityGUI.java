@@ -115,7 +115,11 @@ public class VelocityGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jmAddActionPerformed
 
     private void jmDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmDeleteActionPerformed
-        // TODO add your handling code here:
+        int[] rows = jtOut.getSelectedRows();
+        for(int i = rows.length-1; i >= 0; i--){
+            model.delete(rows[i]);
+        }
+        jtOut.addNotify();
     }//GEN-LAST:event_jmDeleteActionPerformed
 
     private void jmMeanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmMeanActionPerformed

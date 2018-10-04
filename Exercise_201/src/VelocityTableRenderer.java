@@ -1,4 +1,5 @@
 
+import java.awt.Color;
 import java.awt.Component;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JLabel;
@@ -30,7 +31,7 @@ public class VelocityTableRenderer implements TableCellRenderer {
             case 5:
                 label.setText("");
         }
+        
         return label;
     }
-
 }
