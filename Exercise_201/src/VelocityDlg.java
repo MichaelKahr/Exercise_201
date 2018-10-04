@@ -4,19 +4,16 @@
  * and open the template in the editor.
  */
 
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-/**
- *
- * @author mikeykahr
- */
 public class VelocityDlg extends javax.swing.JDialog {
 
     private boolean ok = false;
     private Velocity v;
+    private transient DateTimeFormatter dtfdate = DateTimeFormatter.ofPattern("dd.MM.yyyy"); 
+    private transient DateTimeFormatter dtftime = DateTimeFormatter.ofPattern("HH:mm");
 
     /**
      * Creates new form AddDialog
@@ -33,9 +30,6 @@ public class VelocityDlg extends javax.swing.JDialog {
     public Velocity getV() {
         return v;
     }
-    
-
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -143,13 +137,13 @@ public class VelocityDlg extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddActionPerformed
-        ok=true;
-        v = new Velocity(LocalDate.parse(tfDate.getText()),LocalTime.parse(tfTime.getText()),tfSign.getText(),Integer.parseInt(tfVG.getText()),Integer.parseInt(tfVE.getText()));
+        v = new Velocity(LocalDate.parse(tfDate.getText(),dtfdate), LocalTime.parse(tfTime.getText(),dtftime), tfSign.getText(), Integer.parseInt(tfVG.getText()), Integer.parseInt(tfVE.getText()));
+        ok = true;
         this.dispose();
     }//GEN-LAST:event_btAddActionPerformed
 
     private void btCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelActionPerformed
-        ok=false;
+        ok = false;
         this.dispose();
     }//GEN-LAST:event_btCancelActionPerformed
 

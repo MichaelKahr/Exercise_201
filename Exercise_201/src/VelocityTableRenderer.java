@@ -30,7 +30,6 @@ public class VelocityTableRenderer implements TableCellRenderer {
             case 5:
                 label.setText("");
         }
-
         return label;
     }
 

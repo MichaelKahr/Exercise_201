@@ -14,7 +14,7 @@ public class Velocity implements Serializable{
     private int uebertreten = gemessen - erlaubt;
     
     private transient DateTimeFormatter dtfdate = DateTimeFormatter.ofPattern("dd.MM.yyyy"); 
-    private transient DateTimeFormatter dtftime = DateTimeFormatter.ofPattern("hh:mm");
+    private transient DateTimeFormatter dtftime = DateTimeFormatter.ofPattern("HH:mm");
 
     public Velocity(LocalDate date, LocalTime time, String sign,int gemessen, int erlaubt) {
         this.date = date;
@@ -55,7 +55,4 @@ public class Velocity implements Serializable{
     public String getSign() {
         return sign;
     }
-    
-    
-
 }
