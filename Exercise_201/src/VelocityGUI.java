@@ -1,19 +1,31 @@
 
-/**
- *
- * @author mikeykahr
- */
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
+
+
 public class VelocityGUI extends javax.swing.JFrame {
 
     private VelocityTabelModel model = new VelocityTabelModel();
-
+    private Measurement mes = new Measurement();
+    private File file = new File("src\\data.bin");
     /**
      * Creates new form VelocityGUI
      */
-    public VelocityGUI() {
+    public VelocityGUI() throws IOException, FileNotFoundException, ClassNotFoundException {
         initComponents();
         jtOut.setModel(model);
         jtOut.setDefaultRenderer(Object.class, new VelocityTableRenderer());
+        
+        try{
+            mes.load(file , model.getVelocities());
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Load error!");
+        }
     }
 
     /**
@@ -57,6 +69,11 @@ public class VelocityGUI extends javax.swing.JFrame {
         jPopupMenu1.add(jmMean);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jScrollPane1.setComponentPopupMenu(jPopupMenu1);
 
@@ -105,6 +122,14 @@ public class VelocityGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jmMeanActionPerformed
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        try {
+            mes.safe(file, model.getVelocities());
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "File error");
+        }
+    }//GEN-LAST:event_formWindowClosing
+
     /**
      * @param args the command line arguments
      */
@@ -135,7 +160,13 @@ public class VelocityGUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VelocityGUI().setVisible(true);
+                try {
+                    new VelocityGUI().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(VelocityGUI.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(VelocityGUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

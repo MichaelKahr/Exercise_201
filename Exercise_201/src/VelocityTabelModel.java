@@ -4,7 +4,7 @@ import javax.swing.table.AbstractTableModel;
 
 public class VelocityTabelModel extends AbstractTableModel {
 
-    private static String[] colNames = {"Datum", "Uhrzeit", "Kennzeichen", "Gemessen", "Erlaubt", "Übertreten"};
+    private static String[] colNames = {"Datum", "Uhrzeit", "Kennzeichen", "Gemessen", "Erlaubt", "Übertretung"};
     
     private LinkedList<Velocity> velocities = new LinkedList<>();
 
@@ -18,7 +18,10 @@ public class VelocityTabelModel extends AbstractTableModel {
         velocities.remove(idx);
         fireTableRowsUpdated(0, velocities.size()-1);
     }
-    
+
+    public LinkedList<Velocity> getVelocities() {
+        return velocities;
+    }
     
     @Override
     public String getColumnName(int i) {
@@ -40,5 +43,4 @@ public class VelocityTabelModel extends AbstractTableModel {
         Velocity v = velocities.get(rowIndex);
         return v;
     }
-
 }
