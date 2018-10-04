@@ -72,6 +72,7 @@ public class VelocityGUI extends javax.swing.JFrame {
             }
         ));
         jtOut.setComponentPopupMenu(jPopupMenu1);
+        jtOut.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jtOut);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

@@ -41,6 +41,7 @@ public class Velocity implements Serializable{
     }
 
     public int getUebertreten() {
+        uebertreten = gemessen-erlaubt;
         return uebertreten;
     }
 
